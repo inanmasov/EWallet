@@ -1,0 +1,9 @@
+port: "6666"
+
+db:
+    username: "postgres"
+    host: "localhost"
+    port: "5432"
+    password: "lopik456"
+    dbname: "db_infotecs"
+    sslmode: "disable"

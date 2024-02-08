@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  infotecs:
+    build: ./
+    command: ./wait-for-postgres.sh db ./infotecs
+    ports:
+      - 6666:6666
+    depends_on:
+      - db
+    environment:
+      - DB_PASSWORD=lopik456
+
+  db:
+    restart: always
+    image: postgres:latest
+    volumes:
+      - ./internal/schema:/docker-entrypoint-initdb.d
+      - ./.database/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=lopik456
+    ports:
+      - 5432:5432
+    
