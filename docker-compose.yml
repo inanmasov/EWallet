@@ -5,7 +5,7 @@ services:
     build: ./
     command: ./wait-for-postgres.sh db ./infotecs
     ports:
-      - 6666:6666
+      - 8000:8000
     depends_on:
       - db
     environment:
@@ -15,7 +15,7 @@ services:
     restart: always
     image: postgres:latest
     volumes:
-      - ./internal/schema:/docker-entrypoint-initdb.d
+      - ./init-scripts:/docker-entrypoint-initdb.d
       - ./.database/postgres/data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=lopik456

@@ -3,6 +3,7 @@ package database
 import (
 	"database/sql"
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -37,6 +38,7 @@ func Initialize() (*Database, error) {
 	}
 
 	if err = db.Ping(); err != nil {
+		fmt.Println(err)
 		return nil, err
 	}
 
